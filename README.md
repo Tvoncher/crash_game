@@ -3,6 +3,7 @@
 ## Made with React + Babylon + MobX
 
 ## http://crash_game.surge.sh/
+![crash](https://github.com/Tvoncher/crash_game/assets/116438158/0357d9a9-993d-49fa-8040-876f030261cf)
 
 My variation of famous gambling game made in 3D. Just place your bets, launch rocket and try to cash out before explosion.
 
