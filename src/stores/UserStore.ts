@@ -22,6 +22,11 @@ export class UserStore {
     this.balance -= value;
     this.bet += value;
   }
+
+  @action
+  multiplyBet(value: number) {
+    this.bet *= value;
+  }
 }
 
 export const userStore = new UserStore();

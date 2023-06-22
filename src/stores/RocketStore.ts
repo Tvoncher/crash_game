@@ -85,7 +85,7 @@ export class RocketStore {
 
     if (this.rocket) {
       const interval = setInterval(() => {
-        this.position = new Vector3(0, this.position.y + 0.07, 0);
+        this.setPosition(new Vector3(0, this.position.y + 0.07, 0));
         this.rocket!.position = this.position;
       }, this.speed);
 
@@ -99,6 +99,11 @@ export class RocketStore {
   }
 
   @action
+  setPosition(value: Vector3) {
+    this.position = value;
+  }
+
+  @action
   setIsFlying() {
     this.isFlying = !this.isFlying;
   }
@@ -107,7 +112,7 @@ export class RocketStore {
   startFlyingTime(timer: number) {
     const interval = setInterval(() => {
       this.flyingTime += 100;
-      userStore.bet *= 1.01;
+      userStore.multiplyBet(1.01);
     }, 100);
 
     setTimeout(() => {
@@ -146,7 +151,7 @@ export class RocketStore {
     setTimeout(() => {
       this.rocket!.setEnabled(true);
       this.rocket!.position = Vector3.Zero();
-      this.position = Vector3.Zero();
+      this.setPosition(Vector3.Zero());
 
       this.resetFlyingTime();
       this.setIsCashedOut(false);
