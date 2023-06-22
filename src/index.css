@@ -3,3 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --bg-green-neon: linear-gradient(
+    180deg,
+    rgb(184, 248, 146) 05%,
+    rgba(0, 255, 4, 1) 50%,
+    rgb(184, 248, 146) 95%
+  );
+
+  --bg-blue-neon: linear-gradient(
+    180deg,
+    rgb(137, 248, 248) 05%,
+    rgb(0, 255, 255) 50%,
+    rgb(137, 248, 248) 95%
+  );
+
+  --shadow-green-neon: 2px 2px 50px #60f841, 2px 2px 50px #67f74a inset;
+
+  --shadow-blue-neon: 2px 2px 30px #40c3f7, 2px 2px 30px #40c3f7 inset;
+}

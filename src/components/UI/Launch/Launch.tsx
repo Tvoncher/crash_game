@@ -8,7 +8,7 @@ const Launch: FC = () => {
   }, []);
 
   return (
-    <button className="launch" onClick={handleLaunch}>
+    <button className="launch pulsing neon_green" onClick={handleLaunch}>
       LAUNCH
     </button>
   );

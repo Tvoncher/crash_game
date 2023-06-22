@@ -3,7 +3,9 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
@@ -11,17 +13,28 @@
 .UI_balance {
   color: rgb(206, 173, 28);
   font-size: 40px;
-}
-
-.UI_userBet {
-  color: rgb(206, 173, 28);
-  font-size: 45px;
   background: radial-gradient(
     circle,
     rgba(0, 0, 0, 0.2) 10%,
     rgba(255, 255, 255, 0) 70%
   );
   text-shadow: 20px 2px 30px black, 2px 2px 30px rgb(206, 173, 28);
+}
+
+.pulsing {
+  animation: pulsing 2s infinite ease-in-out;
+}
+
+.neon_blue {
+  background: var(--bg-blue-neon);
+  box-shadow: var(--shadow-blue-neon);
+  border: none;
+}
+
+.neon_green {
+  background: var(--bg-green-neon);
+  box-shadow: var(--shadow-green-neon);
+  border: none;
 }
 
 @keyframes pulsing {

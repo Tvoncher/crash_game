@@ -60,6 +60,7 @@ export class RocketStore {
   @action
   launchRocket() {
     rocketStore.setIsFlying();
+    //need to *1000 to convert ms to seconds
     const explodeTimer = Math.random() * MAX_FLYING_TIME * 1000;
 
     this.flyAnim?.forEach((anim) => anim.play());
@@ -135,6 +136,11 @@ export class RocketStore {
     this.rocket!.setEnabled(false);
     userStore.bet = 0;
     rocketStore.setIsFlying();
+
+    this.flyAnim!.forEach((anim) => {
+      anim.stop();
+      anim.reset();
+    });
 
     //reseting everything for new round
     setTimeout(() => {
