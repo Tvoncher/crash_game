@@ -10,6 +10,8 @@ import { ParticleSystemSet } from "@babylonjs/core/Particles/particleSystemSet";
 import { ParticleSystem } from "@babylonjs/core/Particles/particleSystem";
 import { Texture } from "@babylonjs/core/Materials/Textures/texture";
 import { Color4 } from "@babylonjs/core/Maths/math";
+import { playSound } from "../utils/utils";
+import { ESounds } from "../utils/types";
 
 export class RocketStore {
   @observable
@@ -62,6 +64,8 @@ export class RocketStore {
     rocketStore.setIsFlying();
     //need to *1000 to convert ms to seconds
     const explodeTimer = Math.random() * MAX_FLYING_TIME * 1000;
+
+    playSound(ESounds.Launch);
 
     this.flyAnim?.forEach((anim) => anim.play());
 
@@ -160,6 +164,8 @@ export class RocketStore {
 
   @action
   createExplosion() {
+    playSound(ESounds.Explosion);
+
     ParticleHelper.CreateAsync("explosion", this.scene).then(
       (set: ParticleSystemSet) => {
         set.systems.forEach((system) => {

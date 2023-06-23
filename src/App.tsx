@@ -6,6 +6,7 @@ import Rocket from "./components/rocket";
 import BaseLight from "./components/baseLight";
 import BaseCamera from "./components/baseCamera";
 import Environment from "./components/environment";
+import SoundsContainer from "./components/Sounds/SoundsContainer";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import "./App.css";
 
@@ -25,6 +26,7 @@ const App = observer(() => {
           <Environment />
         </Scene>
       </Engine>
+      <SoundsContainer />
       <UI />
     </div>
   );
