@@ -9,6 +9,7 @@ import BaseCamera from "./components/baseCamera";
 import Environment from "./components/environment";
 import SoundsContainer from "./components/Sounds/SoundsContainer";
 import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
+import Elon from "./components/elon";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import "./App.css";
 
@@ -25,6 +26,7 @@ const App = observer(() => {
           <BaseLight />
           <Suspense>
             <Rocket />
+            <Elon />
             <Environment />
           </Suspense>
         </Scene>
