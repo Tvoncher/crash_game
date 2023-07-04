@@ -5,12 +5,11 @@ import { action, makeObservable, observable } from "mobx";
 import { MAX_FLYING_TIME } from "../utils/consts";
 import { userStore } from "./UserStore";
 import { Scene } from "@babylonjs/core/scene";
-import { ParticleHelper } from "@babylonjs/core/Particles/particleHelper";
-import { ParticleSystemSet } from "@babylonjs/core/Particles/particleSystemSet";
-import { ParticleSystem } from "@babylonjs/core/Particles/particleSystem";
-import { Texture } from "@babylonjs/core/Materials/Textures/texture";
-import { Color4 } from "@babylonjs/core/Maths/math";
-import { playSound } from "../utils/utils";
+import {
+  createExplosionParticles,
+  createFlyingParticles,
+  playSound,
+} from "../utils/utils";
 import { ESoundsID } from "../utils/types";
 
 export class RocketStore {
@@ -62,28 +61,14 @@ export class RocketStore {
   @action
   launchRocket() {
     rocketStore.setIsFlying();
-    //need to *1000 to convert ms to seconds
+    //converting ms to seconds
     const explodeTimer = Math.random() * MAX_FLYING_TIME * 1000;
 
     playSound(ESoundsID.Launch);
 
     this.flyAnim?.forEach((anim) => anim.play());
 
-    const particleSystem = new ParticleSystem("particles", 100, this.scene!);
-    particleSystem.particleTexture = new Texture("textures/spark.png");
-
-    particleSystem.emitter = this.rocket;
-
-    particleSystem.emitRate = 90;
-    particleSystem.minLifeTime = 1.5;
-    particleSystem.minSize = 0.05;
-    particleSystem.maxSize = 0.2;
-    particleSystem.color1 = new Color4(1, 0.5, 0, 1);
-    particleSystem.color2 = new Color4(1, 0, 0, 0.8);
-    particleSystem.blendMode = ParticleSystem.BLENDMODE_ADD;
-
-    particleSystem.disposeOnStop = true;
-    particleSystem.start();
+    createFlyingParticles(explodeTimer, this.scene, this.rocket);
 
     this.startFlyingTime(explodeTimer);
 
@@ -95,7 +80,6 @@ export class RocketStore {
 
       setTimeout(() => {
         clearInterval(interval);
-        particleSystem.stop();
       }, explodeTimer);
     }
 
@@ -140,7 +124,7 @@ export class RocketStore {
 
   @action
   explodeRocket() {
-    //TDO: add sound
+    playSound(ESoundsID.Explosion);
     this.createExplosion();
     this.rocket!.setEnabled(false);
     userStore.bet = 0;
@@ -164,20 +148,7 @@ export class RocketStore {
 
   @action
   createExplosion() {
-    playSound(ESoundsID.Explosion);
-
-    ParticleHelper.CreateAsync("explosion", this.scene).then(
-      (set: ParticleSystemSet) => {
-        set.systems.forEach((system) => {
-          const sub = system as ParticleSystem;
-          sub.disposeOnStop = true;
-          sub.worldOffset = this.position;
-        });
-        //just dont need this effect
-        set.systems[3].dispose();
-        set.start();
-      }
-    );
+    createExplosionParticles(this.position, this.scene!);
   }
 
   //taking money
