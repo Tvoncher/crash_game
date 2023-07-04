@@ -25,12 +25,12 @@
 }
 
 .possibleProfit {
-  color: rgb(206, 173, 28);
+  color: var(--font-color);
   font-size: 45px;
   background: radial-gradient(
     circle,
     rgba(0, 0, 0, 0.2) 10%,
     rgba(255, 255, 255, 0) 70%
   );
-  text-shadow: 20px 2px 30px black, 2px 2px 30px rgb(206, 173, 28);
+  text-shadow: 20px 2px 30px black, 2px 2px 30px var(--font-color);
 }

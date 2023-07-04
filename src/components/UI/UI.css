@@ -11,14 +11,14 @@
 }
 
 .UI_balance {
-  color: rgb(206, 173, 28);
+  color: var(--font-color);
   font-size: 40px;
   background: radial-gradient(
     circle,
     rgba(0, 0, 0, 0.2) 10%,
     rgba(255, 255, 255, 0) 70%
   );
-  text-shadow: 20px 2px 30px black, 2px 2px 30px rgb(206, 173, 28);
+  text-shadow: 20px 2px 30px black, 2px 2px 30px var(--font-color);
 }
 
 .pulsing {
@@ -48,5 +48,41 @@
 
   100% {
     scale: 1;
+  }
+}
+
+@keyframes shaking {
+  0% {
+    transform: translate(2px, 2px) rotate(2deg);
+  }
+  10% {
+    transform: translate(-2px, -2px) rotate(-2deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(2deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(2deg);
+  }
+  40% {
+    transform: translate(2px, -2px) rotate(2deg);
+  }
+  50% {
+    transform: translate(-2px, 2px) rotate(-2deg);
+  }
+  60% {
+    transform: translate(-3px, 2px) rotate(2deg);
+  }
+  70% {
+    transform: translate(3px, 2px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(-2px, -2px) rotate(2deg);
+  }
+  90% {
+    transform: translate(2px, 2px) rotate(2deg);
+  }
+  100% {
+    transform: translate(2px, -1px) rotate(-1deg);
   }
 }

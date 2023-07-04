@@ -19,6 +19,8 @@
     rgb(137, 248, 248) 95%
   );
 
+  --font-color: rgb(206, 173, 28);
+
   --shadow-green-neon: 2px 2px 50px #60f841, 2px 2px 50px #67f74a inset;
 
   --shadow-blue-neon: 2px 2px 30px #40c3f7, 2px 2px 30px #40c3f7 inset;

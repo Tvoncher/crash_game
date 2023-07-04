@@ -8,4 +8,5 @@
   color: white;
   border-radius: 12px;
   cursor: pointer;
+  animation: shaking 0.7s infinite ease-in-out;
 }

@@ -1,0 +1,16 @@
+.WinningModal {
+  font-weight: bolder;
+  font-size: 36px;
+  color: var(--font-color);
+  padding: 15px;
+  border-radius: 10px;
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(92, 158, 170, 0.2) 15%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    repeating-radial-gradient(circle at 15%, #1c2a2b 1px, #202f30 30px);
+  box-shadow: var(--shadow-blue-neon);
+  animation: pulsing 5s infinite ease-in-out;
+}

@@ -7,11 +7,10 @@ const CashOut: FC = () => {
   const handleTakeMoney = useCallback(() => {
     userStore.setBalance(+userStore.bet.toFixed(2));
     rocketStore.setIsCashedOut(true);
-    alert(`You won ${userStore.bet.toFixed(2)} $ !`);
   }, []);
 
   return (
-    <button className="cashOut pulsing neon_green" onClick={handleTakeMoney}>
+    <button className="cashOut neon_green" onClick={handleTakeMoney}>
       CASH OUT
     </button>
   );
