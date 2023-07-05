@@ -66,6 +66,8 @@ export class RocketStore {
 
     playSound(ESoundsID.Launch);
 
+    this.rotateRocket(explodeTimer);
+
     this.flyAnim?.forEach((anim) => anim.play());
 
     createFlyingParticles(explodeTimer, this.scene, this.rocket);
@@ -84,6 +86,18 @@ export class RocketStore {
     }
 
     this.setExplodeRocket(explodeTimer);
+  }
+
+  @action
+  rotateRocket(timer: number) {
+    const rotationInterval = setInterval(() => {
+      this.rocket!.rotate(new Vector3(0, 1, 0), -0.1);
+    }, 30);
+
+    setTimeout(() => {
+      clearInterval(rotationInterval);
+      this.rocket!.rotation = new Vector3(0, Math.PI, 0);
+    }, timer);
   }
 
   @action
