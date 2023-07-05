@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import "./Bet.css";
 
 const Bet: FC = observer(() => {
-  const [bet, setBet] = useState(0);
+  const [bet, setBet] = useState(1);
 
   const handleChangeBet = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +33,7 @@ const Bet: FC = observer(() => {
             className="input"
             type="number"
             min={0}
-            placeholder="0 $"
+            placeholder={`${bet}`}
             onChange={handleChangeBet}
           />
           <button
